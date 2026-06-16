@@ -15,25 +15,25 @@
       padding: 24px 16px 60px;
     }
 
-    .page {
-      max-width: 480px;
-      margin: 0 auto;
-    }
+    .page { max-width: 480px; margin: 0 auto; }
 
     /* PROFILE */
-    .profile {
-      text-align: center;
-      padding: 40px 0 32px;
+    .profile { text-align: center; padding: 40px 0 32px; }
+
+    .avatar-wrap { position: relative; width: 100px; height: 100px; margin: 0 auto 16px; }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff, rgba(255,255,255,0.3), #fff);
+      animation: spin 3s linear infinite;
     }
 
-    .avatar-wrap {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 16px;
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .avatar {
+      position: relative;
       width: 100px;
       height: 100px;
       border-radius: 50%;
@@ -41,9 +41,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
-      border: 4px solid white;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      font-size: 44px;
+      border: 3px solid white;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      z-index: 1;
     }
 
     .online-dot {
@@ -55,554 +56,435 @@
       background: #22C55E;
       border-radius: 50%;
       border: 3px solid white;
+      z-index: 2;
     }
 
-    .profile-name {
-      font-size: 26px;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 6px;
-      letter-spacing: -0.02em;
-    }
+    .profile-name { font-size: 26px; font-weight: 800; color: white; margin-bottom: 4px; letter-spacing: -0.02em; }
+    .profile-title { font-size: 14px; color: rgba(255,255,255,0.85); margin-bottom: 4px; font-weight: 500; }
+    .profile-edu { font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 4px; font-weight: 500; }
+    .profile-location { font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 16px; }
 
-    .profile-title {
-      font-size: 15px;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 4px;
-      font-weight: 500;
-    }
+    .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 4px; }
 
-    .profile-location {
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 16px;
-    }
-
-    .profile-badge {
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: rgba(255,255,255,0.2);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.3);
-      padding: 6px 16px;
+      padding: 5px 12px;
       border-radius: 50px;
-      font-size: 12px;
+      font-size: 11px;
       color: white;
       font-weight: 600;
     }
 
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      background: #22C55E;
-      border-radius: 50%;
-      animation: blink 1.5s infinite;
-    }
+    .badge-dot { width: 6px; height: 6px; background: #22C55E; border-radius: 50%; animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    @keyframes blink {
-      0%,100% { opacity:1 }
-      50% { opacity:0.3 }
-    }
+    /* SECTION */
+    .section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin: 28px 0 12px 4px; }
 
-    /* SECTION TITLE */
-    .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin: 28px 0 12px 4px;
-    }
-
-    /* LINK BUTTONS — big icon style like beacons */
+    /* LINK BUTTONS */
     .link-btn {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: white;
-      border-radius: 18px;
-      padding: 16px 20px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: #1a1a1a;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transition: all 0.2s;
-      position: relative;
+      display: flex; align-items: center; gap: 14px;
+      background: white; border-radius: 18px; padding: 14px 18px;
+      margin-bottom: 10px; text-decoration: none; color: #1a1a1a;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.2s;
     }
-
     .link-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
 
-    .link-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-    }
+    .link-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .link-label { font-size: 10px; color: #9CA3AF; font-weight: 600; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .link-title { font-size: 14px; font-weight: 700; color: #111; }
+    .link-arrow { color: #D1D5DB; font-size: 20px; margin-left: auto; }
 
-    .link-content { flex: 1; }
-    .link-label { font-size: 11px; color: #9CA3AF; font-weight: 500; margin-bottom: 2px; }
-    .link-title { font-size: 15px; font-weight: 700; color: #111; }
+    /* STATS ROW */
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
 
-    .link-arrow {
-      color: #D1D5DB;
-      font-size: 18px;
-      font-weight: 300;
-    }
+    .stat-card { background: white; border-radius: 16px; padding: 16px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .stat-num { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+    .stat-label { font-size: 10px; color: #9CA3AF; font-weight: 600; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* PROJECT CARDS */
     .project-card {
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      display: block;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transition: all 0.2s;
+      background: white; border-radius: 20px; padding: 20px; margin-bottom: 10px;
+      text-decoration: none; display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.2s;
     }
-
     .project-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
 
-    .project-top {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 12px;
-    }
-
-    .project-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      flex-shrink: 0;
-    }
-
-    .project-meta { flex: 1; }
-    .project-name { font-size: 16px; font-weight: 700; color: #111; margin-bottom: 2px; }
-    .project-sub { font-size: 12px; color: #9CA3AF; font-weight: 500; }
-
-    .project-arrow-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: #F3F4F6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6B7280;
-      font-size: 14px;
-      transition: all 0.2s;
-    }
-
+    .project-top { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .project-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+    .project-name { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 1px; }
+    .project-sub { font-size: 11px; color: #9CA3AF; font-weight: 500; }
+    .project-arrow-btn { width: 30px; height: 30px; border-radius: 8px; background: #F3F4F6; display: flex; align-items: center; justify-content: center; color: #6B7280; font-size: 13px; margin-left: auto; transition: all 0.2s; flex-shrink: 0; }
     .project-card:hover .project-arrow-btn { background: #6366F1; color: white; }
-
-    .project-desc {
-      font-size: 13px;
-      color: #6B7280;
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    .project-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    .chip {
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
+    .project-desc { font-size: 12px; color: #6B7280; line-height: 1.6; margin-bottom: 12px; }
+    .project-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .chip { padding: 3px 9px; border-radius: 7px; font-size: 10px; font-weight: 700; }
     .chip-purple { background: #EDE9FE; color: #7C3AED; }
     .chip-blue { background: #DBEAFE; color: #1D4ED8; }
     .chip-green { background: #D1FAE5; color: #065F46; }
     .chip-pink { background: #FCE7F3; color: #9D174D; }
     .chip-orange { background: #FEF3C7; color: #92400E; }
     .chip-cyan { background: #CFFAFE; color: #164E63; }
+    .chip-red { background: #FEE2E2; color: #991B1B; }
+
+    /* RESEARCH CARD */
+    .research-card {
+      background: white; border-radius: 20px; padding: 18px; margin-bottom: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.2s;
+      text-decoration: none; display: block;
+    }
+    .research-card:hover { transform: translateY(-2px); }
+    .research-title { font-size: 13px; font-weight: 700; color: #111; margin-bottom: 6px; line-height: 1.4; }
+    .research-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .research-date { font-size: 10px; color: #9CA3AF; font-weight: 600; }
+    .research-badge { padding: 2px 8px; border-radius: 5px; font-size: 10px; font-weight: 700; background: #EDE9FE; color: #7C3AED; }
 
     /* SKILL GRID */
-    .skill-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .skill-card {
-      background: white;
-      border-radius: 18px;
-      padding: 18px 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transition: all 0.2s;
-    }
-
+    .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .skill-card { background: white; border-radius: 18px; padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.2s; }
     .skill-card:hover { transform: translateY(-2px); }
-
-    .skill-icon-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .skill-emoji { font-size: 20px; }
-    .skill-name { font-size: 13px; font-weight: 700; color: #111; }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-
-    .stag {
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 10px;
-      font-weight: 600;
-    }
+    .skill-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .skill-emoji { font-size: 18px; }
+    .skill-name { font-size: 12px; font-weight: 700; color: #111; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .stag { padding: 2px 8px; border-radius: 5px; font-size: 10px; font-weight: 700; }
 
     /* EXP CARDS */
-    .exp-card {
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      transition: all 0.2s;
-    }
-
+    .exp-card { background: white; border-radius: 20px; padding: 18px; margin-bottom: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); display: flex; gap: 12px; transition: all 0.2s; }
     .exp-card:hover { transform: translateY(-2px); }
+    .exp-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .exp-role { font-size: 14px; font-weight: 700; color: #111; margin-bottom: 1px; }
+    .exp-company { font-size: 12px; font-weight: 700; margin-bottom: 1px; }
+    .exp-date { font-size: 10px; color: #9CA3AF; margin-bottom: 6px; font-weight: 600; }
+    .exp-desc { font-size: 11px; color: #6B7280; line-height: 1.6; }
 
-    .exp-icon-box {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-
-    .exp-info { flex: 1; }
-    .exp-role { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 2px; }
-    .exp-company { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-    .exp-date { font-size: 11px; color: #9CA3AF; margin-bottom: 8px; font-weight: 500; }
-    .exp-desc { font-size: 12px; color: #6B7280; line-height: 1.6; }
-
-    /* CONTACT CARD */
-    .contact-card {
-      background: white;
-      border-radius: 24px;
-      padding: 32px 24px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    .contact-emoji { font-size: 48px; margin-bottom: 12px; }
-    .contact-title { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 8px; letter-spacing: -0.01em; }
-    .contact-sub { font-size: 13px; color: #6B7280; margin-bottom: 24px; line-height: 1.6; }
-
-    .contact-email-btn {
-      display: block;
-      padding: 14px 24px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      border-radius: 14px;
-      text-decoration: none;
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      transition: all 0.2s;
-      box-shadow: 0 4px 20px rgba(102,126,234,0.4);
-    }
-
+    /* CONTACT */
+    .contact-card { background: white; border-radius: 24px; padding: 32px 24px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .contact-emoji { font-size: 44px; margin-bottom: 10px; }
+    .contact-title { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .contact-sub { font-size: 12px; color: #6B7280; margin-bottom: 20px; line-height: 1.6; }
+    .contact-email-btn { display: block; padding: 13px 24px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 14px; text-decoration: none; color: white; font-size: 13px; font-weight: 700; margin-bottom: 10px; transition: all 0.2s; box-shadow: 0 4px 20px rgba(102,126,234,0.4); }
     .contact-email-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(102,126,234,0.5); }
-
-    .contact-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .contact-row a {
-      padding: 12px;
-      background: #F9FAFB;
-      border: 1px solid #E5E7EB;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #374151;
-      font-size: 13px;
-      font-weight: 600;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
+    .contact-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .contact-row a { padding: 10px 8px; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 12px; text-decoration: none; color: #374151; font-size: 11px; font-weight: 700; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px; }
     .contact-row a:hover { background: #F3F4F6; transform: translateY(-1px); }
 
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 32px 0 0;
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      font-weight: 500;
-    }
+    .footer { text-align: center; padding: 28px 0 0; font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500; }
 
     /* ANIMATIONS */
-    .card-anim {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s ease;
-    }
+    .card-anim { opacity: 0; transform: translateY(16px); transition: all 0.4s ease; }
     .card-anim.show { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
-  <div class="page">
+<div class="page">
 
-    <!-- PROFILE -->
-    <div class="profile card-anim">
-      <div class="avatar-wrap">
-        <div class="avatar">👨‍💻</div>
-        <div class="online-dot"></div>
-      </div>
-      <h1 class="profile-name">Vishesh Chaudhary</h1>
-      <p class="profile-title">Full Stack Developer & AI Builder</p>
-      <p class="profile-location">📍 Jersey City, New Jersey</p>
-      <div class="profile-badge">
-        <div class="badge-dot"></div>
-        Open to Internships
-      </div>
+  <!-- PROFILE -->
+  <div class="profile card-anim">
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <div class="avatar">👨‍💻</div>
+      <div class="online-dot"></div>
     </div>
-
-    <!-- CONNECT -->
-    <div class="section-title">Connect</div>
-
-    <a href="mailto:visheshchaudhary70398@gmail.com" class="link-btn card-anim">
-      <div class="link-icon" style="background:#FEE2E2">📧</div>
-      <div class="link-content">
-        <div class="link-label">Send me an email</div>
-        <div class="link-title">visheshchaudhary70398@gmail.com</div>
-      </div>
-      <div class="link-arrow">›</div>
-    </a>
-
-    <a href="https://github.com/Vishesh559" target="_blank" class="link-btn card-anim">
-      <div class="link-icon" style="background:#F3F4F6">🐙</div>
-      <div class="link-content">
-        <div class="link-label">Check out my code</div>
-        <div class="link-title">github.com/Vishesh559</div>
-      </div>
-      <div class="link-arrow">›</div>
-    </a>
-
-    <a href="https://www.linkedin.com/in/visheshchaudhary70398/" target="_blank" class="link-btn card-anim">
-      <div class="link-icon" style="background:#DBEAFE">💼</div>
-      <div class="link-content">
-        <div class="link-label">Let's connect</div>
-        <div class="link-title">LinkedIn Profile</div>
-      </div>
-      <div class="link-arrow">›</div>
-    </a>
-
-    <!-- PROJECTS -->
-    <div class="section-title">Projects</div>
-
-    <a href="https://github.com/Vishesh559/walletwise" target="_blank" class="project-card card-anim">
-      <div class="project-top">
-        <div class="project-icon" style="background:#EDE9FE">💰</div>
-        <div class="project-meta">
-          <div class="project-name">WalletWise</div>
-          <div class="project-sub">Mobile App · Full Stack · AI</div>
-        </div>
-        <div class="project-arrow-btn">↗</div>
-      </div>
-      <div class="project-desc">AI-powered personal finance app with expense tracking, budget goals, monthly reports, live currency converter and an intelligent AI finance assistant.</div>
-      <div class="project-chips">
-        <span class="chip chip-purple">Flutter</span>
-        <span class="chip chip-blue">Python Flask</span>
-        <span class="chip chip-green">PostgreSQL</span>
-        <span class="chip chip-pink">Groq AI</span>
-        <span class="chip chip-orange">JWT Auth</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/Vishesh559/fitmind" target="_blank" class="project-card card-anim">
-      <div class="project-top">
-        <div class="project-icon" style="background:#CFFAFE">🏋️</div>
-        <div class="project-meta">
-          <div class="project-name">FitMind AI</div>
-          <div class="project-sub">Web App · Full Stack · AI</div>
-        </div>
-        <div class="project-arrow-btn">↗</div>
-      </div>
-      <div class="project-desc">Intelligent fitness platform with workout tracking, nutrition logging and an AI personal coach that gives advice based on your real data.</div>
-      <div class="project-chips">
-        <span class="chip chip-cyan">Next.js 14</span>
-        <span class="chip chip-purple">TypeScript</span>
-        <span class="chip chip-green">FastAPI</span>
-        <span class="chip chip-pink">Groq AI</span>
-      </div>
-    </a>
-
-    <a href="https://drive.google.com/file/d/1WpFRXltt6xUP9fUDIOA77wgdLQa89T5F/view?usp=sharing" target="_blank" class="project-card card-anim" style="background:linear-gradient(135deg,#667eea,#764ba2)">
-      <div class="project-top">
-        <div class="project-icon" style="background:rgba(255,255,255,0.2)">🎥</div>
-        <div class="project-meta">
-          <div class="project-name" style="color:white">Watch Demo Video</div>
-          <div class="project-sub" style="color:rgba(255,255,255,0.7)">WalletWise full walkthrough</div>
-        </div>
-        <div class="project-arrow-btn" style="background:rgba(255,255,255,0.2);color:white">▶</div>
-      </div>
-      <div class="project-desc" style="color:rgba(255,255,255,0.8)">See all features in action — onboarding, transactions, AI chat, currency converter, budget tracking and more.</div>
-    </a>
-
-    <!-- SKILLS -->
-    <div class="section-title">Skills</div>
-    <div class="skill-grid">
-      <div class="skill-card card-anim">
-        <div class="skill-icon-title">
-          <span class="skill-emoji">📱</span>
-          <span class="skill-name">Mobile</span>
-        </div>
-        <div class="skill-tags">
-          <span class="stag" style="background:#EDE9FE;color:#7C3AED">Flutter</span>
-          <span class="stag" style="background:#EDE9FE;color:#7C3AED">Dart</span>
-          <span class="stag" style="background:#EDE9FE;color:#7C3AED">Provider</span>
-        </div>
-      </div>
-      <div class="skill-card card-anim">
-        <div class="skill-icon-title">
-          <span class="skill-emoji">🌐</span>
-          <span class="skill-name">Frontend</span>
-        </div>
-        <div class="skill-tags">
-          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">Next.js</span>
-          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">TypeScript</span>
-          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">React</span>
-          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">Tailwind</span>
-        </div>
-      </div>
-      <div class="skill-card card-anim">
-        <div class="skill-icon-title">
-          <span class="skill-emoji">⚙️</span>
-          <span class="skill-name">Backend</span>
-        </div>
-        <div class="skill-tags">
-          <span class="stag" style="background:#D1FAE5;color:#065F46">Python</span>
-          <span class="stag" style="background:#D1FAE5;color:#065F46">Flask</span>
-          <span class="stag" style="background:#D1FAE5;color:#065F46">FastAPI</span>
-          <span class="stag" style="background:#D1FAE5;color:#065F46">REST API</span>
-        </div>
-      </div>
-      <div class="skill-card card-anim">
-        <div class="skill-icon-title">
-          <span class="skill-emoji">🗄️</span>
-          <span class="skill-name">Database</span>
-        </div>
-        <div class="skill-tags">
-          <span class="stag" style="background:#FEF3C7;color:#92400E">PostgreSQL</span>
-          <span class="stag" style="background:#FEF3C7;color:#92400E">SQLAlchemy</span>
-          <span class="stag" style="background:#FEF3C7;color:#92400E">JWT</span>
-        </div>
-      </div>
-      <div class="skill-card card-anim">
-        <div class="skill-icon-title">
-          <span class="skill-emoji">🤖</span>
-          <span class="skill-name">AI</span>
-        </div>
-        <div class="skill-tags">
-          <span class="stag" style="background:#FCE7F3;color:#9D174D">Groq AI</span>
-          <span class="stag" style="background:#FCE7F3;color:#9D174D">Claude API</span>
-          <span class="stag" style="background:#FCE7F3;color:#9D174D">LLMs</span>
-        </div>
-      </div>
-      <div class="skill-card card-anim">
-        <div class="skill-icon-title">
-          <span class="skill-emoji">🌍</span>
-          <span class="skill-name">Web</span>
-        </div>
-        <div class="skill-tags">
-          <span class="stag" style="background:#CFFAFE;color:#164E63">HTML5</span>
-          <span class="stag" style="background:#CFFAFE;color:#164E63">CSS3</span>
-          <span class="stag" style="background:#CFFAFE;color:#164E63">JavaScript</span>
-        </div>
-      </div>
+    <h1 class="profile-name">Vishesh Chaudhary</h1>
+    <p class="profile-title">Full Stack Developer & AI Builder</p>
+    <p class="profile-edu">🎓 MS Computer Science · Fairleigh Dickinson University</p>
+    <p class="profile-location">📍 Jersey City, New Jersey</p>
+    <div class="badges">
+      <div class="badge"><div class="badge-dot"></div>Open to Internships</div>
+      <div class="badge">📄 7 Publications</div>
     </div>
-
-    <!-- EXPERIENCE -->
-    <div class="section-title">Experience</div>
-
-    <div class="exp-card card-anim">
-      <div class="exp-icon-box" style="background:#FEF3C7">💼</div>
-      <div class="exp-info">
-        <div class="exp-role">Web Developer Intern</div>
-        <div class="exp-company" style="color:#D97706">Tackfield</div>
-        <div class="exp-date">2024 · 3 months</div>
-        <div class="exp-desc">Built web interfaces independently using HTML, CSS and JavaScript. Delivered frontend features in a professional environment.</div>
-      </div>
-    </div>
-
-    <div class="exp-card card-anim">
-      <div class="exp-icon-box" style="background:#EDE9FE">💰</div>
-      <div class="exp-info">
-        <div class="exp-role">Full Stack Developer</div>
-        <div class="exp-company" style="color:#7C3AED">WalletWise</div>
-        <div class="exp-date">2025 · Personal Project</div>
-        <div class="exp-desc">Built complete AI finance app — Flutter, Flask, PostgreSQL, JWT auth, budget tracking, currency converter and AI assistant.</div>
-      </div>
-    </div>
-
-    <div class="exp-card card-anim">
-      <div class="exp-icon-box" style="background:#CFFAFE">🏋️</div>
-      <div class="exp-info">
-        <div class="exp-role">Full Stack Developer</div>
-        <div class="exp-company" style="color:#0891B2">FitMind AI</div>
-        <div class="exp-date">2025 · Personal Project</div>
-        <div class="exp-desc">Built AI fitness platform — Next.js 14, TypeScript, FastAPI, PostgreSQL and Groq AI personal coach.</div>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="section-title">Get In Touch</div>
-    <div class="contact-card card-anim">
-      <div class="contact-emoji">🚀</div>
-      <div class="contact-title">Let's work together!</div>
-      <div class="contact-sub">I'm actively looking for software engineering internships and ready to contribute from day one.</div>
-      <a href="mailto:visheshchaudhary70398@gmail.com" class="contact-email-btn">
-        📧 Send me an email
-      </a>
-      <div class="contact-row">
-        <a href="https://github.com/Vishesh559" target="_blank">🐙 GitHub</a>
-        <a href="https://www.linkedin.com/in/visheshchaudhary70398/" target="_blank">💼 LinkedIn</a>
-      </div>
-    </div>
-
-    <div class="footer">
-      © 2025 Vishesh Chaudhary · Jersey City, NJ
-    </div>
-
   </div>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
-      });
-    }, { threshold: 0.05 });
+  <!-- STATS -->
+  <div class="stats-row card-anim">
+    <div class="stat-card">
+      <div class="stat-num" style="color:#6366F1">7</div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#06B6D4">1.2K</div>
+      <div class="stat-label">Reads</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#10B981">2+</div>
+      <div class="stat-label">AI Apps</div>
+    </div>
+  </div>
 
-    document.querySelectorAll('.card-anim').forEach(el => observer.observe(el));
-  </script>
+  <!-- CONNECT -->
+  <div class="section-title">Connect</div>
 
+  <a href="mailto:visheshchaudhary70398@gmail.com" class="link-btn card-anim">
+    <div class="link-icon" style="background:#FEE2E2">📧</div>
+    <div>
+      <div class="link-label">Email me</div>
+      <div class="link-title">visheshchaudhary70398@gmail.com</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="https://github.com/Vishesh559" target="_blank" class="link-btn card-anim">
+    <div class="link-icon" style="background:#F3F4F6">🐙</div>
+    <div>
+      <div class="link-label">My Code</div>
+      <div class="link-title">github.com/Vishesh559</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="https://www.linkedin.com/in/visheshchaudhary70398/" target="_blank" class="link-btn card-anim">
+    <div class="link-icon" style="background:#DBEAFE">💼</div>
+    <div>
+      <div class="link-label">LinkedIn</div>
+      <div class="link-title">visheshchaudhary70398</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="https://www.researchgate.net/profile/Vishesh-Chaudhary-2" target="_blank" class="link-btn card-anim">
+    <div class="link-icon" style="background:#D1FAE5">🔬</div>
+    <div>
+      <div class="link-label">Research</div>
+      <div class="link-title">ResearchGate · 7 Publications</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <!-- PROJECTS -->
+  <div class="section-title">Projects</div>
+
+  <a href="https://github.com/Vishesh559/walletwise" target="_blank" class="project-card card-anim">
+    <div class="project-top">
+      <div class="project-icon" style="background:#EDE9FE">💰</div>
+      <div>
+        <div class="project-name">WalletWise</div>
+        <div class="project-sub">Mobile App · Full Stack · AI</div>
+      </div>
+      <div class="project-arrow-btn">↗</div>
+    </div>
+    <div class="project-desc">AI-powered personal finance app with expense tracking, budget goals, monthly reports, live currency converter and an intelligent AI finance assistant.</div>
+    <div class="project-chips">
+      <span class="chip chip-purple">Flutter</span>
+      <span class="chip chip-blue">Flask</span>
+      <span class="chip chip-green">PostgreSQL</span>
+      <span class="chip chip-pink">Groq AI</span>
+      <span class="chip chip-orange">JWT</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/Vishesh559/fitmind" target="_blank" class="project-card card-anim">
+    <div class="project-top">
+      <div class="project-icon" style="background:#CFFAFE">🏋️</div>
+      <div>
+        <div class="project-name">FitMind AI</div>
+        <div class="project-sub">Web App · Full Stack · AI</div>
+      </div>
+      <div class="project-arrow-btn">↗</div>
+    </div>
+    <div class="project-desc">Intelligent fitness platform with workout tracking, nutrition logging and an AI personal coach that gives personalized advice based on real user data.</div>
+    <div class="project-chips">
+      <span class="chip chip-cyan">Next.js 14</span>
+      <span class="chip chip-purple">TypeScript</span>
+      <span class="chip chip-green">FastAPI</span>
+      <span class="chip chip-pink">Groq AI</span>
+    </div>
+  </a>
+
+  <a href="https://drive.google.com/file/d/1WpFRXltt6xUP9fUDIOA77wgdLQa89T5F/view?usp=sharing" target="_blank" class="project-card card-anim" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+    <div class="project-top">
+      <div class="project-icon" style="background:rgba(255,255,255,0.2)">🎥</div>
+      <div>
+        <div class="project-name" style="color:white">Watch Demo Video</div>
+        <div class="project-sub" style="color:rgba(255,255,255,0.7)">WalletWise full walkthrough</div>
+      </div>
+      <div class="project-arrow-btn" style="background:rgba(255,255,255,0.2);color:white">▶</div>
+    </div>
+    <div class="project-desc" style="color:rgba(255,255,255,0.8)">See all features — onboarding, transactions, AI chat, currency converter, budget tracking and more.</div>
+  </a>
+
+  <!-- RESEARCH -->
+  <div class="section-title">Research Publications</div>
+
+  <a href="https://www.researchgate.net/publication/351812603_INCREMENT_OF_CACHE_HIT_RATE_AND_OVERVIEW_OF_SIMULATION" target="_blank" class="research-card card-anim">
+    <div class="research-title">Increment of Cache Hit Rate and Overview of Simulation</div>
+    <div class="research-meta">
+      <span class="research-date">May 2021</span>
+      <span class="research-badge">Computer Science</span>
+    </div>
+  </a>
+
+  <a href="https://www.researchgate.net/publication/348961431_COMPUTER_COUNTENANCED_DIAGNOSIS_OF_SKIN_NODULE_DETECTION_AND_HISTOGRAM_AUGMENTATION_EXTRACTING_SYSTEM_FOR_SKIN_CANCER" target="_blank" class="research-card card-anim">
+    <div class="research-title">Computer Aided Diagnosis of Skin Nodule Detection and Histogram Augmentation for Skin Cancer</div>
+    <div class="research-meta">
+      <span class="research-date">Feb 2021</span>
+      <span class="research-badge">AI & Healthcare</span>
+    </div>
+  </a>
+
+  <a href="https://www.researchgate.net/publication/347488173_Hybrid_Extraction_of_Detecting_Breast_Cancer_with_Fuzzy" target="_blank" class="research-card card-anim">
+    <div class="research-title">Hybrid Extraction of Detecting Breast Cancer with Fuzzy Logic</div>
+    <div class="research-meta">
+      <span class="research-date">Dec 2020</span>
+      <span class="research-badge">AI & Healthcare</span>
+    </div>
+  </a>
+
+  <a href="https://www.researchgate.net/publication/349645787_Review_of_green_e-commerce_security" target="_blank" class="research-card card-anim">
+    <div class="research-title">Review of Green E-Commerce Security</div>
+    <div class="research-meta">
+      <span class="research-date">Jan 2021</span>
+      <span class="research-badge">Data Science</span>
+    </div>
+  </a>
+
+  <a href="https://www.researchgate.net/profile/Vishesh-Chaudhary-2" target="_blank" class="link-btn card-anim" style="background:linear-gradient(135deg,#059669,#10B981)">
+    <div class="link-icon" style="background:rgba(255,255,255,0.2);font-size:20px">📄</div>
+    <div>
+      <div class="link-label" style="color:rgba(255,255,255,0.7)">View all</div>
+      <div class="link-title" style="color:white">7 Publications on ResearchGate</div>
+    </div>
+    <div class="link-arrow" style="color:rgba(255,255,255,0.5)">›</div>
+  </a>
+
+  <!-- SKILLS -->
+  <div class="section-title">Skills</div>
+  <div class="skill-grid">
+    <div class="skill-card card-anim">
+      <div class="skill-head"><span class="skill-emoji">📱</span><span class="skill-name">Mobile</span></div>
+      <div class="skill-tags">
+        <span class="stag" style="background:#EDE9FE;color:#7C3AED">Flutter</span>
+        <span class="stag" style="background:#EDE9FE;color:#7C3AED">Dart</span>
+        <span class="stag" style="background:#EDE9FE;color:#7C3AED">Provider</span>
+      </div>
+    </div>
+    <div class="skill-card card-anim">
+      <div class="skill-head"><span class="skill-emoji">🌐</span><span class="skill-name">Frontend</span></div>
+      <div class="skill-tags">
+        <span class="stag" style="background:#DBEAFE;color:#1D4ED8">Next.js</span>
+        <span class="stag" style="background:#DBEAFE;color:#1D4ED8">TypeScript</span>
+        <span class="stag" style="background:#DBEAFE;color:#1D4ED8">React</span>
+      </div>
+    </div>
+    <div class="skill-card card-anim">
+      <div class="skill-head"><span class="skill-emoji">⚙️</span><span class="skill-name">Backend</span></div>
+      <div class="skill-tags">
+        <span class="stag" style="background:#D1FAE5;color:#065F46">Python</span>
+        <span class="stag" style="background:#D1FAE5;color:#065F46">Flask</span>
+        <span class="stag" style="background:#D1FAE5;color:#065F46">FastAPI</span>
+      </div>
+    </div>
+    <div class="skill-card card-anim">
+      <div class="skill-head"><span class="skill-emoji">🤖</span><span class="skill-name">AI & ML</span></div>
+      <div class="skill-tags">
+        <span class="stag" style="background:#FCE7F3;color:#9D174D">Groq AI</span>
+        <span class="stag" style="background:#FCE7F3;color:#9D174D">Claude</span>
+        <span class="stag" style="background:#FCE7F3;color:#9D174D">LLMs</span>
+      </div>
+    </div>
+    <div class="skill-card card-anim">
+      <div class="skill-head"><span class="skill-emoji">🗄️</span><span class="skill-name">Database</span></div>
+      <div class="skill-tags">
+        <span class="stag" style="background:#FEF3C7;color:#92400E">PostgreSQL</span>
+        <span class="stag" style="background:#FEF3C7;color:#92400E">SQLAlchemy</span>
+      </div>
+    </div>
+    <div class="skill-card card-anim">
+      <div class="skill-head"><span class="skill-emoji">🌍</span><span class="skill-name">Web</span></div>
+      <div class="skill-tags">
+        <span class="stag" style="background:#CFFAFE;color:#164E63">HTML5</span>
+        <span class="stag" style="background:#CFFAFE;color:#164E63">CSS3</span>
+        <span class="stag" style="background:#CFFAFE;color:#164E63">JavaScript</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section-title">Education</div>
+
+  <div class="exp-card card-anim">
+    <div class="exp-icon" style="background:#EDE9FE">🎓</div>
+    <div>
+      <div class="exp-role">Master of Science</div>
+      <div class="exp-company" style="color:#7C3AED">Fairleigh Dickinson University</div>
+      <div class="exp-date">Teaneck, NJ · Current</div>
+      <div class="exp-desc">Computer Science — Mathematics, Computer Science and Physics Department</div>
+    </div>
+  </div>
+
+  <div class="exp-card card-anim">
+    <div class="exp-icon" style="background:#DBEAFE">🏫</div>
+    <div>
+      <div class="exp-role">Bachelor of Engineering</div>
+      <div class="exp-company" style="color:#1D4ED8">Chandigarh University</div>
+      <div class="exp-date">Chandigarh, India · 2020 – 2023</div>
+      <div class="exp-desc">Computer Science — Published 7 research papers during undergraduate studies</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section-title">Experience</div>
+
+  <div class="exp-card card-anim">
+    <div class="exp-icon" style="background:#FEF3C7">💼</div>
+    <div>
+      <div class="exp-role">Web Developer Intern</div>
+      <div class="exp-company" style="color:#D97706">Tackfield</div>
+      <div class="exp-date">2024 · 3 months</div>
+      <div class="exp-desc">Built web interfaces independently using HTML, CSS and JavaScript. Delivered frontend features in a professional environment.</div>
+    </div>
+  </div>
+
+  <div class="exp-card card-anim">
+    <div class="exp-icon" style="background:#EDE9FE">💰</div>
+    <div>
+      <div class="exp-role">Full Stack Developer</div>
+      <div class="exp-company" style="color:#7C3AED">WalletWise — Personal Project</div>
+      <div class="exp-date">2025 · Independent</div>
+      <div class="exp-desc">Built complete AI finance app — Flutter, Flask, PostgreSQL, JWT auth, budget tracking and Groq AI assistant.</div>
+    </div>
+  </div>
+
+  <div class="exp-card card-anim">
+    <div class="exp-icon" style="background:#CFFAFE">🏋️</div>
+    <div>
+      <div class="exp-role">Full Stack Developer</div>
+      <div class="exp-company" style="color:#0891B2">FitMind AI — Personal Project</div>
+      <div class="exp-date">2025 · Independent</div>
+      <div class="exp-desc">Built AI fitness platform — Next.js 14, TypeScript, FastAPI, PostgreSQL and Groq AI personal coach.</div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section-title">Get In Touch</div>
+  <div class="contact-card card-anim">
+    <div class="contact-emoji">🚀</div>
+    <div class="contact-title">Let's work together!</div>
+    <div class="contact-sub">MS Computer Science student at FDU actively looking for software engineering internships. Ready to contribute from day one.</div>
+    <a href="mailto:visheshchaudhary70398@gmail.com" class="contact-email-btn">📧 Send me an email</a>
+    <div class="contact-row">
+      <a href="https://github.com/Vishesh559" target="_blank">🐙 GitHub</a>
+      <a href="https://www.linkedin.com/in/visheshchaudhary70398/" target="_blank">💼 LinkedIn</a>
+      <a href="https://www.researchgate.net/profile/Vishesh-Chaudhary-2" target="_blank">🔬 Research</a>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Vishesh Chaudhary · Jersey City, NJ</div>
+
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.card-anim').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
