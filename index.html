@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishesh Chaudhary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #f5576c 100%);
+      padding: 24px 16px 60px;
+    }
+
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* PROFILE */
+    .profile {
+      text-align: center;
+      padding: 40px 0 32px;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 16px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      border: 4px solid white;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .online-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      background: #22C55E;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+
+    .profile-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .profile-title {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .profile-location {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 16px;
+    }
+
+    .profile-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 12px;
+      color: white;
+      font-weight: 600;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #22C55E;
+      border-radius: 50%;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity:1 }
+      50% { opacity:0.3 }
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin: 28px 0 12px 4px;
+    }
+
+    /* LINK BUTTONS — big icon style like beacons */
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      border-radius: 18px;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #1a1a1a;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .link-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+
+    .link-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .link-content { flex: 1; }
+    .link-label { font-size: 11px; color: #9CA3AF; font-weight: 500; margin-bottom: 2px; }
+    .link-title { font-size: 15px; font-weight: 700; color: #111; }
+
+    .link-arrow {
+      color: #D1D5DB;
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    /* PROJECT CARDS */
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.2s;
+    }
+
+    .project-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .project-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .project-meta { flex: 1; }
+    .project-name { font-size: 16px; font-weight: 700; color: #111; margin-bottom: 2px; }
+    .project-sub { font-size: 12px; color: #9CA3AF; font-weight: 500; }
+
+    .project-arrow-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #F3F4F6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6B7280;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .project-card:hover .project-arrow-btn { background: #6366F1; color: white; }
+
+    .project-desc {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .project-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .chip-purple { background: #EDE9FE; color: #7C3AED; }
+    .chip-blue { background: #DBEAFE; color: #1D4ED8; }
+    .chip-green { background: #D1FAE5; color: #065F46; }
+    .chip-pink { background: #FCE7F3; color: #9D174D; }
+    .chip-orange { background: #FEF3C7; color: #92400E; }
+    .chip-cyan { background: #CFFAFE; color: #164E63; }
+
+    /* SKILL GRID */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .skill-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.2s;
+    }
+
+    .skill-card:hover { transform: translateY(-2px); }
+
+    .skill-icon-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .skill-emoji { font-size: 20px; }
+    .skill-name { font-size: 13px; font-weight: 700; color: #111; }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .stag {
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    /* EXP CARDS */
+    .exp-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      transition: all 0.2s;
+    }
+
+    .exp-card:hover { transform: translateY(-2px); }
+
+    .exp-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .exp-info { flex: 1; }
+    .exp-role { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 2px; }
+    .exp-company { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .exp-date { font-size: 11px; color: #9CA3AF; margin-bottom: 8px; font-weight: 500; }
+    .exp-desc { font-size: 12px; color: #6B7280; line-height: 1.6; }
+
+    /* CONTACT CARD */
+    .contact-card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-emoji { font-size: 48px; margin-bottom: 12px; }
+    .contact-title { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .contact-sub { font-size: 13px; color: #6B7280; margin-bottom: 24px; line-height: 1.6; }
+
+    .contact-email-btn {
+      display: block;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 14px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(102,126,234,0.4);
+    }
+
+    .contact-email-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(102,126,234,0.5); }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .contact-row a {
+      padding: 12px;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .contact-row a:hover { background: #F3F4F6; transform: translateY(-1px); }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 32px 0 0;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+
+    /* ANIMATIONS */
+    .card-anim {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+    .card-anim.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- PROFILE -->
+    <div class="profile card-anim">
+      <div class="avatar-wrap">
+        <div class="avatar">👨‍💻</div>
+        <div class="online-dot"></div>
+      </div>
+      <h1 class="profile-name">Vishesh Chaudhary</h1>
+      <p class="profile-title">Full Stack Developer & AI Builder</p>
+      <p class="profile-location">📍 Jersey City, New Jersey</p>
+      <div class="profile-badge">
+        <div class="badge-dot"></div>
+        Open to Internships
+      </div>
+    </div>
+
+    <!-- CONNECT -->
+    <div class="section-title">Connect</div>
+
+    <a href="mailto:visheshchaudhary70398@gmail.com" class="link-btn card-anim">
+      <div class="link-icon" style="background:#FEE2E2">📧</div>
+      <div class="link-content">
+        <div class="link-label">Send me an email</div>
+        <div class="link-title">visheshchaudhary70398@gmail.com</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a href="https://github.com/Vishesh559" target="_blank" class="link-btn card-anim">
+      <div class="link-icon" style="background:#F3F4F6">🐙</div>
+      <div class="link-content">
+        <div class="link-label">Check out my code</div>
+        <div class="link-title">github.com/Vishesh559</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/visheshchaudhary70398/" target="_blank" class="link-btn card-anim">
+      <div class="link-icon" style="background:#DBEAFE">💼</div>
+      <div class="link-content">
+        <div class="link-label">Let's connect</div>
+        <div class="link-title">LinkedIn Profile</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <!-- PROJECTS -->
+    <div class="section-title">Projects</div>
+
+    <a href="https://github.com/Vishesh559/walletwise" target="_blank" class="project-card card-anim">
+      <div class="project-top">
+        <div class="project-icon" style="background:#EDE9FE">💰</div>
+        <div class="project-meta">
+          <div class="project-name">WalletWise</div>
+          <div class="project-sub">Mobile App · Full Stack · AI</div>
+        </div>
+        <div class="project-arrow-btn">↗</div>
+      </div>
+      <div class="project-desc">AI-powered personal finance app with expense tracking, budget goals, monthly reports, live currency converter and an intelligent AI finance assistant.</div>
+      <div class="project-chips">
+        <span class="chip chip-purple">Flutter</span>
+        <span class="chip chip-blue">Python Flask</span>
+        <span class="chip chip-green">PostgreSQL</span>
+        <span class="chip chip-pink">Groq AI</span>
+        <span class="chip chip-orange">JWT Auth</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/Vishesh559/fitmind" target="_blank" class="project-card card-anim">
+      <div class="project-top">
+        <div class="project-icon" style="background:#CFFAFE">🏋️</div>
+        <div class="project-meta">
+          <div class="project-name">FitMind AI</div>
+          <div class="project-sub">Web App · Full Stack · AI</div>
+        </div>
+        <div class="project-arrow-btn">↗</div>
+      </div>
+      <div class="project-desc">Intelligent fitness platform with workout tracking, nutrition logging and an AI personal coach that gives advice based on your real data.</div>
+      <div class="project-chips">
+        <span class="chip chip-cyan">Next.js 14</span>
+        <span class="chip chip-purple">TypeScript</span>
+        <span class="chip chip-green">FastAPI</span>
+        <span class="chip chip-pink">Groq AI</span>
+      </div>
+    </a>
+
+    <a href="https://drive.google.com/file/d/1WpFRXltt6xUP9fUDIOA77wgdLQa89T5F/view?usp=sharing" target="_blank" class="project-card card-anim" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+      <div class="project-top">
+        <div class="project-icon" style="background:rgba(255,255,255,0.2)">🎥</div>
+        <div class="project-meta">
+          <div class="project-name" style="color:white">Watch Demo Video</div>
+          <div class="project-sub" style="color:rgba(255,255,255,0.7)">WalletWise full walkthrough</div>
+        </div>
+        <div class="project-arrow-btn" style="background:rgba(255,255,255,0.2);color:white">▶</div>
+      </div>
+      <div class="project-desc" style="color:rgba(255,255,255,0.8)">See all features in action — onboarding, transactions, AI chat, currency converter, budget tracking and more.</div>
+    </a>
+
+    <!-- SKILLS -->
+    <div class="section-title">Skills</div>
+    <div class="skill-grid">
+      <div class="skill-card card-anim">
+        <div class="skill-icon-title">
+          <span class="skill-emoji">📱</span>
+          <span class="skill-name">Mobile</span>
+        </div>
+        <div class="skill-tags">
+          <span class="stag" style="background:#EDE9FE;color:#7C3AED">Flutter</span>
+          <span class="stag" style="background:#EDE9FE;color:#7C3AED">Dart</span>
+          <span class="stag" style="background:#EDE9FE;color:#7C3AED">Provider</span>
+        </div>
+      </div>
+      <div class="skill-card card-anim">
+        <div class="skill-icon-title">
+          <span class="skill-emoji">🌐</span>
+          <span class="skill-name">Frontend</span>
+        </div>
+        <div class="skill-tags">
+          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">Next.js</span>
+          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">TypeScript</span>
+          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">React</span>
+          <span class="stag" style="background:#DBEAFE;color:#1D4ED8">Tailwind</span>
+        </div>
+      </div>
+      <div class="skill-card card-anim">
+        <div class="skill-icon-title">
+          <span class="skill-emoji">⚙️</span>
+          <span class="skill-name">Backend</span>
+        </div>
+        <div class="skill-tags">
+          <span class="stag" style="background:#D1FAE5;color:#065F46">Python</span>
+          <span class="stag" style="background:#D1FAE5;color:#065F46">Flask</span>
+          <span class="stag" style="background:#D1FAE5;color:#065F46">FastAPI</span>
+          <span class="stag" style="background:#D1FAE5;color:#065F46">REST API</span>
+        </div>
+      </div>
+      <div class="skill-card card-anim">
+        <div class="skill-icon-title">
+          <span class="skill-emoji">🗄️</span>
+          <span class="skill-name">Database</span>
+        </div>
+        <div class="skill-tags">
+          <span class="stag" style="background:#FEF3C7;color:#92400E">PostgreSQL</span>
+          <span class="stag" style="background:#FEF3C7;color:#92400E">SQLAlchemy</span>
+          <span class="stag" style="background:#FEF3C7;color:#92400E">JWT</span>
+        </div>
+      </div>
+      <div class="skill-card card-anim">
+        <div class="skill-icon-title">
+          <span class="skill-emoji">🤖</span>
+          <span class="skill-name">AI</span>
+        </div>
+        <div class="skill-tags">
+          <span class="stag" style="background:#FCE7F3;color:#9D174D">Groq AI</span>
+          <span class="stag" style="background:#FCE7F3;color:#9D174D">Claude API</span>
+          <span class="stag" style="background:#FCE7F3;color:#9D174D">LLMs</span>
+        </div>
+      </div>
+      <div class="skill-card card-anim">
+        <div class="skill-icon-title">
+          <span class="skill-emoji">🌍</span>
+          <span class="skill-name">Web</span>
+        </div>
+        <div class="skill-tags">
+          <span class="stag" style="background:#CFFAFE;color:#164E63">HTML5</span>
+          <span class="stag" style="background:#CFFAFE;color:#164E63">CSS3</span>
+          <span class="stag" style="background:#CFFAFE;color:#164E63">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section-title">Experience</div>
+
+    <div class="exp-card card-anim">
+      <div class="exp-icon-box" style="background:#FEF3C7">💼</div>
+      <div class="exp-info">
+        <div class="exp-role">Web Developer Intern</div>
+        <div class="exp-company" style="color:#D97706">Tackfield</div>
+        <div class="exp-date">2024 · 3 months</div>
+        <div class="exp-desc">Built web interfaces independently using HTML, CSS and JavaScript. Delivered frontend features in a professional environment.</div>
+      </div>
+    </div>
+
+    <div class="exp-card card-anim">
+      <div class="exp-icon-box" style="background:#EDE9FE">💰</div>
+      <div class="exp-info">
+        <div class="exp-role">Full Stack Developer</div>
+        <div class="exp-company" style="color:#7C3AED">WalletWise</div>
+        <div class="exp-date">2025 · Personal Project</div>
+        <div class="exp-desc">Built complete AI finance app — Flutter, Flask, PostgreSQL, JWT auth, budget tracking, currency converter and AI assistant.</div>
+      </div>
+    </div>
+
+    <div class="exp-card card-anim">
+      <div class="exp-icon-box" style="background:#CFFAFE">🏋️</div>
+      <div class="exp-info">
+        <div class="exp-role">Full Stack Developer</div>
+        <div class="exp-company" style="color:#0891B2">FitMind AI</div>
+        <div class="exp-date">2025 · Personal Project</div>
+        <div class="exp-desc">Built AI fitness platform — Next.js 14, TypeScript, FastAPI, PostgreSQL and Groq AI personal coach.</div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section-title">Get In Touch</div>
+    <div class="contact-card card-anim">
+      <div class="contact-emoji">🚀</div>
+      <div class="contact-title">Let's work together!</div>
+      <div class="contact-sub">I'm actively looking for software engineering internships and ready to contribute from day one.</div>
+      <a href="mailto:visheshchaudhary70398@gmail.com" class="contact-email-btn">
+        📧 Send me an email
+      </a>
+      <div class="contact-row">
+        <a href="https://github.com/Vishesh559" target="_blank">🐙 GitHub</a>
+        <a href="https://www.linkedin.com/in/visheshchaudhary70398/" target="_blank">💼 LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2025 Vishesh Chaudhary · Jersey City, NJ
+    </div>
+
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.card-anim').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
